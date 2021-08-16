@@ -1,0 +1,42 @@
+<root>
+<name>Wake On LAN</name>
+<key>wakeonlan</key>
+<state>stable</state>
+<logo></logo>
+<description>
+    <short>
+        <en>Simple plugin for Wake On LAN (WOL).</en>
+    </short>
+    <long>
+        <en>This plugin adds very basic Wake On LAN (WOL) functionality to GLPI. It can send WOL signals directly from your GLPI server or POST the MAC and broadcast addresses to a remote URL. WOL signals can be send via "Actions" for a single or multiple targets.</en>
+    </long>
+</description>
+<homepage>https://github.com/UB-Mannheim/glpi-wol</homepage>
+<download>https://github.com/UB-Mannheim/glpi-wol/releases</download>
+<issues>https://github.com/UB-Mannheim/glpi-wol/issues</issues>
+<readme>https://github.com/UB-Mannheim/glpi-wol/blob/master/README.md</readme>
+<authors>
+    <author>Dennis Müller</author>
+</authors>
+<versions>
+    <version>
+        <num>0.0.1</num>
+        <compatibility>9.5</compatibility>
+    </version>
+</versions>
+<langs>
+    <lang>en_US</lang>
+</langs>
+<license>GPLV3+</license>
+<tags>
+    <en>
+        <tag>wake on lan</tag>
+        <tag>wakeonlan</tag>
+        <tag>wol</tag>
+    </en>
+</tags>
+<!--screenshots>
+    <screenshot>https://github.com/pluginsGLPI/fields/raw/master/screenshot.png</screenshot>
+    <screenshot>https://github.com/pluginsGLPI/fields/raw/master/screenshot2.png</screenshot>
+</screenshots-->
+</root>
