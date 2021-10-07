@@ -2,7 +2,7 @@
 function plugin_wakeonlan_install() {
    global $DB;
 
-   //instanciate migration with version
+   //instantiate migration with version
    $migration = new Migration(100);
 
    //Create table only if it does not exists yet!

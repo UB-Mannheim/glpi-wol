@@ -1,5 +1,5 @@
 # GLPI WOL
-Simple plugin that adds basic Wake On LAN (WOL) functionality. 
+Simple plugin that adds basic Wake On LAN (WOL) functionality.
 
 WOL signals can be send via "Actions" for a single or multiple targets.
 
@@ -35,4 +35,4 @@ As a response the plugin expects a JSON dictionary in the form of:
 ## Known limitations
 - Not localized yet.
 - Not tested with IPv6 yet.
-- Does not confirm if the WOL signal rechead the target.
+- Does not confirm if the WOL signal reached the target.
