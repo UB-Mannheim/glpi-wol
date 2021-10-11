@@ -1,10 +1,18 @@
 # GLPI WOL
 Simple plugin that adds basic Wake On LAN (WOL) functionality.
 
-WOL signals can be send via "Actions" for a single or multiple targets.
+WOL signals can be sent via "Actions" for a single or multiple targets.
+
+![Action UI](https://raw.githubusercontent.com/UB-Mannheim/glpi-wol/main/images/action.png)
+
+This is free software. You may use it under the terms of the GNU General Public License version 2 or later (GPLv2+). See [LICENSE](LICENSE) for details.
 
 ## Installation
-Use `git clone https://github.com/UB-Mannheim/glpi-wol.git /path/to/glpi/plugins/wakeonlan`, then install and configure via webfrontend (Setup > Plugins).
+Clone this repository to the GLPI plugin directory. The target directory must be named "wakeonlan". E.g.:
+
+`git clone https://github.com/UB-Mannheim/glpi-wol.git /var/www/glpi/plugins/wakeonlan`
+
+Then install and configure via webfrontend (Setup > Plugins).
 
 ## Configuration & Usage
 You may configure the plugin to either
@@ -31,7 +39,6 @@ As a response the plugin expects a JSON dictionary in the form of:
   "msg": "Arbitrary message, in practice only relevant for informing about errors."
 }
 ```
-
 ## Known limitations
 - Not localized yet.
 - Not tested with IPv6 yet.

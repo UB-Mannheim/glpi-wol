@@ -27,7 +27,7 @@
 <langs>
     <lang>en_US</lang>
 </langs>
-<license>GPLV3+</license>
+<license>GPLV2+</license>
 <tags>
     <en>
         <tag>wake on lan</tag>
@@ -35,8 +35,7 @@
         <tag>wol</tag>
     </en>
 </tags>
-<!--screenshots>
-    <screenshot>https://github.com/pluginsGLPI/fields/raw/master/screenshot.png</screenshot>
-    <screenshot>https://github.com/pluginsGLPI/fields/raw/master/screenshot2.png</screenshot>
-</screenshots-->
+<screenshots>
+	<screenshot>https://github.com/UB-Mannheim/wakeonlan/raw/master/images/action.png</screenshot>
+</screenshots>
 </root>
