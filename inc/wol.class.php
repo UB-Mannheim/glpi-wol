@@ -128,7 +128,7 @@ class PluginWakeonlanWOL extends CommonDBTM
          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
          curl_setopt($ch, CURLOPT_POST, 1);
          $poststr = "$macfield=$mac&$broadfield=$broad";
-         $custom_post = $wolConfig->fields['custom_post'];
+         $custom_post = htmlspecialchars_decode($wolConfig->fields['custom_post']);
          if ($custom_post) {
             $poststr .= $custom_post;
          }
