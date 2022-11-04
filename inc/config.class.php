@@ -50,9 +50,7 @@ class PluginWakeonlanConfig extends CommonDBTM
       }
    }
 
-   function showForm($options = []) {
-      global $ID;
-
+   function showForm($ID, array $options = []) {
       $this->initForm($ID, $options);
       $this->showFormHeader($options);
 
