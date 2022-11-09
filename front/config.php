@@ -36,6 +36,6 @@ if ($wolConfig::canView()) {
       "config",
       "plugins"
    );
-   $wolConfig->showForm();
+   $wolConfig->showForm($wolConfig->getID());
    Html::footer();
 }
