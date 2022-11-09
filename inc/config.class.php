@@ -58,7 +58,7 @@ class PluginWakeonlanConfig extends CommonDBTM
       echo "<td>".__('Method', 'wakeonlan')."</td>";
       echo "<td>";
       foreach (['local', 'remote'] as $m) {
-         $checked = $m === $this->fields['wolmethod'] ? "checked" : "";
+         $checked = (array_key_exists('wolmethod', $this->fields) && $this->fields['wolmethod'] === $m) ? "checked" : "";
          echo "<input type='radio' id='$m' value='$m' name='wolmethod' $checked>";
          echo "<label for='local'>" . __($m, 'wakeonalan') . "</label>";
          echo "<br/>";
@@ -71,28 +71,28 @@ class PluginWakeonlanConfig extends CommonDBTM
       echo "<tr>";
       echo "<td>".__('Remote URL', 'wakeonlan')."</td>";
       echo "<td>";
-      echo HTML::input('remoteurl', ['value' => $this->fields['remoteurl']]);
+      echo HTML::input('remoteurl', ['value' => array_key_exists('remoteurl', $this->fields) ? $this->fields['remoteurl'] : ""]);
       echo "</td>";
       echo "</tr>";
 
       echo "<tr>";
       echo "<td>".__('MAC Field', 'wakeonlan')."</td>";
       echo "<td>";
-      echo HTML::input('macfield', ['value' => $this->fields['macfield']]);
+      echo HTML::input('macfield', ['value' => array_key_exists('macfield', $this->fields) ? $this->fields['macfield'] : ""]);
       echo "</td>";
       echo "</tr>";
 
       echo "<tr>";
       echo "<td>".__('Broadcast Field', 'wakeonlan')."</td>";
       echo "<td>";
-      echo HTML::input('broadfield', ['value' => $this->fields['broadfield']]);
+      echo HTML::input('broadfield', ['value' => array_key_exists('broadfield', $this->fields) ? $this->fields['broadfield'] : ""]);
       echo "</td>";
       echo "</tr>";
 
       echo "<tr>";
       echo "<td>".__('Custom Post String', 'wakeonlan')."</td>";
       echo "<td>";
-      echo HTML::input('custom_post', ['value' => $this->fields['custom_post']]);
+      echo HTML::input('custom_post', ['value' => array_key_exists('custom_post', $this->fields) ? $this->fields['custom_post'] : ""]);
       echo "</td>";
       echo "</tr>";
 
