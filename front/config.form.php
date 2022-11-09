@@ -27,6 +27,7 @@ if (!$plugin->isInstalled('wakeonlan') || !$plugin->isActivated('wakeonlan')) {
 }
 
 $wolConfig = new PluginWakeonlanConfig();
+$wolConfig->getConfig();
 
 if (isset($_POST["update"]) || isset($_POST["add"])) {
    $data = $_POST;
@@ -45,6 +46,6 @@ if (isset($_POST["update"]) || isset($_POST["add"])) {
       "config",
       "plugins"
    );
-   $wolConfig->showForm();
+   $wolConfig->showForm($wolConfig->getID());
    Html::footer();
 }
