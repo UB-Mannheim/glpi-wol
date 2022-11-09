@@ -20,8 +20,12 @@
 </authors>
 <versions>
     <version>
+        <num>0.0.3</num>
+        <compatibility>10.0</compatibility>
+    </version>
+    <version>
         <num>0.0.2</num>
-        <compatibility>10.0.6</compatibility>
+        <compatibility>10.0</compatibility>
     </version>
     <version>
         <num>0.0.1</num>

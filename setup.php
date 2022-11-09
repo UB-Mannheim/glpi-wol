@@ -17,7 +17,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>. 
  */
 
-define('PLUGIN_WAKEONLAN_VERSION', '0.0.2');
+define('PLUGIN_WAKEONLAN_VERSION', '0.0.3');
 
 function plugin_init_wakeonlan() {
    global $PLUGIN_HOOKS;
@@ -38,10 +38,10 @@ function plugin_version_wakeonlan() {
        'author' => 'UB Mannheim',
        'requirements' => [
           'glpi' => [
-             'min' => '9.5',
+             'min' => '10.0',
           ],
           'php' => [
-              'min' => '7.4',
+              'min' => '8.1',
               'exts' => [
                  'curl' => [ 'required' => 'true' ],
               ]
