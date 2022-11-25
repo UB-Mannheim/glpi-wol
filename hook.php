@@ -23,15 +23,21 @@ function plugin_wakeonlan_install() {
    //instantiate migration with version
    $migration = new Migration(100);
 
-   //Create table only if it does not exists yet!
    if (!$DB->tableExists('glpi_plugin_wakeonlan_configs')) {
-         $query = "CREATE TABLE `glpi_plugin_wakeonlan_configs` (
-          `id` int(11) NOT NULL AUTO_INCREMENT,
-          `type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-          `value` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-          PRIMARY KEY (`id`),
-          UNIQUE KEY `unicity` (`type`)
-      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1";
+      //Create table if it does not exists yet
+      $query = "CREATE TABLE `glpi_plugin_wakeonlan_configs` (
+            `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+            `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+            `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+            PRIMARY KEY (`id`),
+            UNIQUE KEY `unicity` (`type`)
+         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1";
+      $DB->queryOrDie($query, $DB->error());
+   } else {
+      //Make sure existing tables have desired properties
+      $query = "ALTER TABLE `glpi_plugin_wakeonlan_configs` MODIFY COLUMN `id` int UNSIGNED NOT NULL AUTO_INCREMENT";
+      $DB->queryOrDie($query, $DB->error());
+      $query = "ALTER TABLE `glpi_plugin_wakeonlan_configs` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
       $DB->queryOrDie($query, $DB->error());
    }
    $migration->executeMigration();
