@@ -17,7 +17,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>. 
  */
 
-define('PLUGIN_WAKEONLAN_VERSION', '0.0.3');
+define('PLUGIN_WAKEONLAN_VERSION', '0.0.4');
 
 function plugin_init_wakeonlan() {
    global $PLUGIN_HOOKS;
