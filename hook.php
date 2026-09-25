@@ -21,28 +21,23 @@ function plugin_wakeonlan_install() {
    global $DB;
 
    //instantiate migration with version
-   $migration = new Migration(100);
+   $migration = new Migration('11.0');
 
    if (!$DB->tableExists('glpi_plugin_wakeonlan_configs')) {
       //Create table if it does not exists yet
-      $query = "CREATE TABLE `glpi_plugin_wakeonlan_configs` (
+      $DB->doQuery("CREATE TABLE `glpi_plugin_wakeonlan_configs` (
             `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
             `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
             `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
             PRIMARY KEY (`id`),
             UNIQUE KEY `unicity` (`type`)
-         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1";
-      $DB->queryOrDie($query, $DB->error());
-      $query = "INSERT INTO `glpi_plugin_wakeonlan_configs` (type, value) VALUES('entities_id', 0)";
-      $DB->queryOrDie($query, $DB->error());
-      $query = "INSERT INTO `glpi_plugin_wakeonlan_configs` (type, value) VALUES('wolmethod', 'local')";
-      $DB->queryOrDie($query, $DB->error());
+         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=1");
+      $DB->insert('glpi_plugin_wakeonlan_configs', ['type' => 'entities_id', 'value' => '0']);
+      $DB->insert('glpi_plugin_wakeonlan_configs', ['type' => 'wolmethod', 'value' => 'local']);
    } else {
       //Make sure existing tables have desired properties
-      $query = "ALTER TABLE `glpi_plugin_wakeonlan_configs` MODIFY COLUMN `id` int UNSIGNED NOT NULL AUTO_INCREMENT";
-      $DB->queryOrDie($query, $DB->error());
-      $query = "ALTER TABLE `glpi_plugin_wakeonlan_configs` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
-      $DB->queryOrDie($query, $DB->error());
+      $DB->doQuery("ALTER TABLE `glpi_plugin_wakeonlan_configs` MODIFY COLUMN `id` int UNSIGNED NOT NULL AUTO_INCREMENT");
+      $DB->doQuery("ALTER TABLE `glpi_plugin_wakeonlan_configs` CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
    }
    $migration->executeMigration();
    return true;
@@ -58,10 +53,7 @@ function plugin_wakeonlan_uninstall() {
    foreach ($tables as $table) {
       $tablename = 'glpi_plugin_wakeonlan_' . $table;
       if ($DB->tableExists($tablename)) {
-         $DB->queryOrDie(
-            "DROP TABLE `$tablename`",
-            $DB->error()
-         );
+         $DB->dropTable($tablename);
       }
    }
 
