@@ -60,7 +60,7 @@ class PluginWakeonlanConfig extends CommonDBTM
       foreach (['local', 'remote'] as $m) {
          $checked = (array_key_exists('wolmethod', $this->fields) && $this->fields['wolmethod'] === $m) ? "checked" : "";
          echo "<input type='radio' id='$m' value='$m' name='wolmethod' $checked>";
-         echo "<label for='local'>" . __($m, 'wakeonalan') . "</label>";
+         echo "<label for='$m'>" . __($m, 'wakeonlan') . "</label>";
          echo "<br/>";
       }
       echo "</td>";

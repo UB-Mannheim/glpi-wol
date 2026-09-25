@@ -62,8 +62,8 @@ class PluginWakeonlanWOL extends CommonDBTM
             ]
          ],
          'WHERE' => [
-            'glpi_networkports.items_id' => $DB->escape($items_id),
-            'glpi_networkports.itemtype' => $DB->escape($item->getType()),
+            'glpi_networkports.items_id' => $items_id,
+            'glpi_networkports.itemtype' => $item->getType(),
             'glpi_ipaddresses.version' => "4",
             // TODO: support IPv6
          ]
