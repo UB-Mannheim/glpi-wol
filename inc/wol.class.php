@@ -165,16 +165,20 @@ class PluginWakeonlanWOL extends CommonDBTM
             if (count($netinfos) < 1) {
                $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_KO);
                $ma->addMessage("Could not retrieve suitable netinfo for item ID $id.");
-               return;
+               continue;
             }
+            $ok = false;
+            $msgs = [];
             foreach ($netinfos as $ni) {
                list($success, $response) = $wol->wake($ni['mac'], $ni['broad']);
-               if ($success) {
-                  $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_OK);
-               } else {
-                  $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_KO);
-                  $ma->addMessage($response);
-               }
+               $ok = $ok || $success;
+               $msgs[] = $response;
+            }
+            if ($ok) {
+               $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_OK);
+            } else {
+               $ma->itemDone($item->getType(), $id, MassiveAction::ACTION_KO);
+               $ma->addMessage(implode(' ', $msgs));
             }
          }
          return;
