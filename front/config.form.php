@@ -19,7 +19,7 @@
 
 include ('../../../inc/includes.php');
 
-Session::checkRight("config", READ);
+Session::checkRight("config", UPDATE);
 
 $plugin = new Plugin();
 if (!$plugin->isInstalled('wakeonlan') || !$plugin->isActivated('wakeonlan')) {

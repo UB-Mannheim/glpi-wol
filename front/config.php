@@ -19,7 +19,7 @@
 
 require "../../../inc/includes.php";
 
-Session::checkRight("config", READ);
+Session::checkRight("config", UPDATE);
 
 $plugin = new Plugin();
 if (!$plugin->isInstalled('wakeonlan') || !$plugin->isActivated('wakeonlan')) {
@@ -29,7 +29,7 @@ if (!$plugin->isInstalled('wakeonlan') || !$plugin->isActivated('wakeonlan')) {
 $wolConfig = new PluginWakeonlanConfig();
 $wolConfig->getConfig();
 
-if ($wolConfig::canView()) {
+if ($wolConfig::canUpdate()) {
    Html::header(
       __('Wake on LAN Config', 'wakeonlan'),
       $_SERVER['PHP_SELF'],

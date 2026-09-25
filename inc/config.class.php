@@ -22,6 +22,15 @@ class PluginWakeonlanConfig extends CommonDBTM
 {
    static $rightname = "config";
 
+   // The config is a key/value settings store, not user-created items.
+   // "Creating" a config entry is really just updating settings, so grant it
+   // to anyone who can update settings (config UPDATE) rather than requiring
+   // the rarely granted config CREATE right. Without this, initForm() on the
+   // settings page 403s because getID() resolves as a "new" item.
+   public static function canCreate(): bool {
+      return Session::haveRight('config', UPDATE);
+   }
+
    function updateValue($name, $value) {
       // retrieve current config
       $config = current($this->find(['type' => $name]));
