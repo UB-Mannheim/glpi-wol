@@ -20,7 +20,7 @@
 
 class PluginWakeonlanConfig extends CommonDBTM
 {
-    public static $rightname = "config";
+    public static string $rightname = "config";
 
     // The config is a key/value settings store, not user-created items.
     // "Creating" a config entry is really just updating settings, so grant it
@@ -54,7 +54,7 @@ class PluginWakeonlanConfig extends CommonDBTM
     public function getConfig()
     {
         global $DB;
-        $rows = $DB->request('glpi_plugin_wakeonlan_configs');
+        $rows = $DB->request(['FROM' => 'glpi_plugin_wakeonlan_configs']);
         if (count($rows) > 0) {
             foreach ($rows as $row) {
                 $this->fields[$row['type']] = $row['value'];
