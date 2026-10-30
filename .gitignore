@@ -1,6 +1,6 @@
 *.min.*
 *.swp
+*~
 .gh_token
-composer.lock
-dist/
-vendor/
+/dist/
+/vendor/
