@@ -40,7 +40,7 @@ function plugin_version_wakeonlan()
                 'min' => '10.0',
             ],
             'php' => [
-                'min' => '8.1',
+                'min' => '8.2',
                 'exts' => [
                     'curl' => [ 'required' => 'true' ],
                 ],
